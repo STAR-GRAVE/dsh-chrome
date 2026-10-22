@@ -181,7 +181,7 @@ test('registers nothing besides the page and its row', () => {
 test('injects its stylesheet once, tagged so the loader can reclaim it', () => {
   const loaded = loadBundle()
   assert.equal(loaded.styleTags.length, 1)
-  assert.equal(loaded.styleTags[0].dataset.plugin, '@local/dsh-chrome')
+  assert.equal(loaded.styleTags[0].dataset.plugin, '@star-grave/dsh-chrome')
   assert.match(loaded.styleTags[0].textContent, /\.dc-input/)
 })
 
