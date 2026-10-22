@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chrome Control",
-    "description": "Lets the agent drive your real Chrome through a paired MV3 extension: numbered snapshots, click, type, keys, scroll, tabs, navigation, screenshots, console and network capture. Trusted input events (isTrusted) and response bodies are available on demand by briefly attaching the debugger, which shows Chrome's debugging bar and releases itself after two idle minutes. Falls back to a self-launched Chrome over CDP when the extension is not connected."
+    "title": "@star-grave/dsh-chrome",
+    "description": "Drive Chrome from the agent: snapshot, click, type, navigate, screenshot, and read console and network."
   }
 }

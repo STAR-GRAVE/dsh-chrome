@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chrome 控制",
-    "description": "让 agent 通过已配对的 MV3 扩展驱动你真实的 Chrome：编号快照、点击、输入、按键、滚动、标签页、导航、截图、控制台与网络捕获。需要真实输入事件（isTrusted）或读取响应体时，可临时占用调试器，代价是 Chrome 顶部出现调试提示条；空闲 2 分钟后自动释放。扩展未连接时回落到自启 Chrome 的 CDP 通路。"
+    "title": "@star-grave/dsh-chrome",
+    "description": "让 agent 操作 Chrome：快照、点击、输入、导航、截图，以及读取控制台与网络。"
   }
 }

@@ -138,11 +138,14 @@ await test('the extension never references a missing runtime file', () => {
 })
 
 await test('locale metadata names the capability in both languages', () => {
+  const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
   const en = JSON.parse(readFileSync(join(root, 'locale', 'en.json'), 'utf8'))
   const zh = JSON.parse(readFileSync(join(root, 'locale', 'zh.json'), 'utf8'))
+  assert.equal(en.meta.title, pkg.name, 'the display title is the package name')
+  assert.equal(zh.meta.title, pkg.name)
   assert.ok(en.meta.title.length > 0 && en.meta.description.length > 40)
   assert.ok(zh.meta.title.length > 0 && zh.meta.description.length > 20)
-  assert.notEqual(en.meta.title, zh.meta.title)
+  assert.notEqual(en.meta.description, zh.meta.description, 'the description is localized')
 })
 
 await test('the icon is a well-formed SVG inside the size limit', () => {
