@@ -1,4 +1,4 @@
 - insert:
     - id: chrome
-      name: "@local/dsh-chrome"
+      name: "@star-grave/dsh-chrome"
       config: {}

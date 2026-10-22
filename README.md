@@ -54,7 +54,7 @@ dsh plugin --profile desktop add <本地目录或 GitHub 地址>
 
 ```powershell
 dsh plugin --profile desktop add G:\Tools\dsh-chrome
-dsh plugin --profile desktop add github:<账号>/dsh-chrome
+dsh plugin --profile desktop add github:STAR-GRAVE/dsh-chrome
 ```
 
 仓库地址后面可以带 `#<tag>` 或 `#<commit>` 固定版本；不带就用默认分支的最新提交。也可以在插件页点「添加插件」填路径或仓库地址。装完重启 DSH。
@@ -103,7 +103,7 @@ chrome_status action=launch backend=cdp
 
 ```yaml
 - id: chrome
-  name: "@local/dsh-chrome"
+  name: "@star-grave/dsh-chrome"
   config:
     backend: auto            # auto | extension | cdp
     bridgePort: 8731         # 扩展轮询端口；在「Chrome 连接」页改过则以 bridge-port 文件为准
@@ -168,7 +168,7 @@ chrome_status action=launch backend=cdp
 ## 卸载
 
 ```powershell
-dsh plugin --profile desktop remove @local/dsh-chrome
+dsh plugin --profile desktop remove @star-grave/dsh-chrome
 ```
 
 扩展在 `chrome://extensions` 里点移除即可。

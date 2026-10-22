@@ -1,7 +1,17 @@
 {
-  "name": "@local/dsh-chrome",
+  "name": "@star-grave/dsh-chrome",
   "version": "1.1.0",
   "description": "Drive the user's real Google Chrome from DeepSeek Harness: an MV3 extension over a paired local bridge for the everyday signed-in browser, with a zero-contact CDP fallback on an isolated profile.",
+  "author": "STAR-GRAVE",
+  "license": "MIT",
+  "homepage": "https://github.com/STAR-GRAVE/dsh-chrome#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STAR-GRAVE/dsh-chrome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/STAR-GRAVE/dsh-chrome/issues"
+  },
   "type": "module",
   "main": "lib/index.js",
   "engines": {
