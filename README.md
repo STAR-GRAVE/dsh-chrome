@@ -2,18 +2,13 @@
 
 让 DeepSeek Harness 的 agent 操作 Chrome。
 
-| 通路 | 操作哪个 Chrome | 需要你做什么 | 有登录态 |
-|---|---|---|---|
-| extension（默认） | 你日常在用的 Chrome | 手动加载一次扩展，填一次端口与令牌 | ✅ |
-| cdp | 插件自己启动的独立 Chrome | 无，`chrome_status action=launch` | ❌ |
-
-默认优先 extension，扩展从未连上时才回落到 cdp，结果里会注明本次用的是哪条。
+默认操作你日常在用的那个 Chrome，保留登录态。它没连上时会启动一个独立的 Chrome，那个没有你的登录态，可以用 `chrome_status action=close` 关掉。
 
 ## 功能
 
 | 工具 | 用途 |
 |---|---|
-| `chrome_status` | 看通路状态、打印配对信息、启动/关闭浏览器、释放调试会话 |
+| `chrome_status` | 看连接状态、打印配对信息、启动/关闭浏览器、释放调试会话 |
 | `chrome_tabs` | 列出、打开、切换、置前、关闭标签页 |
 | `chrome_navigate` | 打开地址、前进后退、重载，等加载完成并回报最终地址与标题 |
 | `chrome_observe` | 元素快照、正文、HTML、截图、控制台、网络、求值、读响应体 |
@@ -61,9 +56,9 @@ dsh plugin --profile desktop add github:STAR-GRAVE/dsh-chrome#v1.1.0
   config:
     backend: auto            # auto | extension | cdp
     bridgePort: 8731         # 扩展连接端口；在「Chrome 连接」页改过则以页面上的为准
-    chromePath: ''           # cdp 通路的浏览器路径；省略则自动探测
-    headless: true           # cdp 通路是否无窗口
-    viewportWidth: 1280      # cdp 通路的视口
+    chromePath: ''           # 独立浏览器的路径；省略则自动探测
+    headless: true           # 独立浏览器是否无窗口
+    viewportWidth: 1280      # 独立浏览器的视口
     viewportHeight: 900
     defaultTimeoutMs: 15000  # 等页面加载的默认时限
     maxSnapshotElements: 300 # 单次快照最多列出的元素数
@@ -77,8 +72,8 @@ dsh plugin --profile desktop add github:STAR-GRAVE/dsh-chrome#v1.1.0
 
 | 现象 | 处理 |
 |---|---|
-| 工具报「没有可用通路」 | 先 `chrome_status action=status` 看两条通路；扩展未连接就按上面第 2、3 步加载并填端口令牌。 |
-| 扩展显示已连接但工具仍报没有通路 | 插件重载前建立的会话不会自动更新工具，重启 DSH 后新开一个会话。 |
+| 工具提示连不上浏览器 | 先 `chrome_status action=status` 看连接状态；扩展未连接就按上面第 2、3 步加载并填端口令牌。 |
+| 扩展显示已连接但工具仍报错 | 插件重载前建立的会话不会自动更新工具，重启 DSH 后新开一个会话。 |
 | 端口被占用 | 状态里会写明哪个端口；在「Chrome 连接」页改一个空闲端口，再把扩展选项页的端口改成同一个数字。 |
 | 扩展选项页「测试连接」失败 | 端口或令牌不对。「Chrome 连接」页显示的就是当前生效值，两边必须一致。 |
 | 点击没反应 | 该站点可能只认真实指针：让 agent 用 `trusted=true` 再试。 |
