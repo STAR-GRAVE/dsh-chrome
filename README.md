@@ -27,8 +27,10 @@ dsh plugin --profile desktop add <本地目录或 GitHub 地址>
 
 ```powershell
 dsh plugin --profile desktop add G:\Tools\dsh-chrome
-dsh plugin --profile desktop add github:<账号>/dsh-chrome#v1.1.0
+dsh plugin --profile desktop add github:<账号>/dsh-chrome
 ```
+
+仓库地址后面可以带 `#<tag>` 或 `#<commit>` 固定版本；不带就用默认分支的最新提交。
 
 也可以在插件页点「添加插件」填路径或仓库地址。装完重启 DSH。
 
