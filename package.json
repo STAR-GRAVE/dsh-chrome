@@ -1,0 +1,62 @@
+{
+  "name": "@local/dsh-chrome",
+  "version": "1.1.0",
+  "description": "Drive the user's real Google Chrome from DeepSeek Harness: an MV3 extension over a paired local bridge for the everyday signed-in browser, with a zero-contact CDP fallback on an isolated profile.",
+  "type": "module",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=22.15",
+    "dsh": ">=0.2.0-rc.1 <0.3.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*",
+    "@deepseek-ai/schemastery": "*",
+    "@deepseek-ai/dsh-typert-protocol": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./page-script": "./lib/page-script.js",
+    "./bridge": "./lib/bridge.js",
+    "./cdp": "./lib/cdp.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib",
+    "extension",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "chrome",
+    "browser-automation",
+    "mv3-extension",
+    "cordis"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes"
+      ]
+    }
+  }
+}

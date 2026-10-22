@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "DSH Chrome",
+  "version": "1.1.0",
+  "description": "让 DeepSeek Harness 的 agent 通过本机配对桥读写你当前的 Chrome。默认不占调试端口、不装原生消息组件；仅在需要真实输入或完整网络采集时才临时占用调试器。",
+  "minimum_chrome_version": "116",
+  "permissions": ["scripting", "tabs", "storage", "alarms", "debugger"],
+  "host_permissions": ["<all_urls>", "http://127.0.0.1/*", "http://localhost/*"],
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_title": "DSH Chrome",
+    "default_popup": "options.html"
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  }
+}

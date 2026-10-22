@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>DSH Chrome</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --fg: #1a2028;
+        --muted: #667085;
+        --line: #d0d5dd;
+        --accent: #0f7a55;
+        --warn: #b54708;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #16181d;
+          --fg: #e6e8ec;
+          --muted: #98a2b3;
+          --line: #333a45;
+          --accent: #54d1a0;
+          --warn: #f79009;
+        }
+      }
+      body {
+        margin: 0;
+        padding: 16px;
+        width: 380px;
+        font: 13px/1.6 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 15px;
+      }
+      p.lead {
+        margin: 0 0 14px;
+        color: var(--muted);
+      }
+      label {
+        display: block;
+        margin: 12px 0 4px;
+        font-weight: 600;
+      }
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 7px 9px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+      }
+      button {
+        margin-top: 12px;
+        padding: 8px 14px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        background: var(--accent);
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button.secondary {
+        background: transparent;
+        border-color: var(--line);
+        color: var(--fg);
+        font-weight: 500;
+      }
+      #state {
+        margin-top: 14px;
+        padding: 9px 11px;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        white-space: pre-wrap;
+      }
+      #state.ok {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      #state.bad {
+        border-color: var(--warn);
+        color: var(--warn);
+      }
+      .hint {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      code {
+        font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DSH Chrome</h1>
+    <p class="lead">让 agent 操作你已登录的 Chrome。</p>
+
+    <label for="port">桥端口</label>
+    <input id="port" type="number" min="1" max="65535" step="1" inputmode="numeric" placeholder="8731" />
+    <p class="hint" style="margin-top: 6px">主机固定 <code>127.0.0.1</code>，端口要和「Chrome 连接」页一致。</p>
+
+    <label for="token">配对令牌</label>
+    <input id="token" type="password" spellcheck="false" placeholder="粘贴「Chrome 连接」页上的令牌" />
+
+    <button id="save">保存并连接</button>
+    <button id="test" class="secondary">测试连接</button>
+
+    <div id="state">尚未配置。先在「Chrome 连接」页拿到端口和令牌。</div>
+
+    <p class="hint">
+      扩展 id：<code id="extid">…</code><br />
+      需要真实输入或读取响应体时，agent 会临时占用调试器（顶部出现提示条），空闲 2 分钟后释放。
+    </p>
+
+    <script src="options.js"></script>
+  </body>
+</html>
