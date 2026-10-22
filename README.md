@@ -2,8 +2,6 @@
 
 让 DeepSeek Harness 的 agent 操作 Chrome。
 
-默认操作你日常在用的那个 Chrome，保留登录态。它没连上时会启动一个独立的 Chrome，那个没有你的登录态，可以用 `chrome_status action=close` 关掉。
-
 ## 功能
 
 | 工具 | 用途 |
